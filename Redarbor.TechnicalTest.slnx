@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Redarbor.TechnicalTest.Api/Redarbor.TechnicalTest.Api.csproj" Id="62358f4d-095b-41eb-ba0b-f46539c3692e" />
+    <Project Path="src/Redarbor.TechnicalTest.Application/Redarbor.TechnicalTest.Application.csproj" Id="9d3e4e57-ed4b-4e4a-a94c-7d0d37619fe1" />
+    <Project Path="src/Redarbor.TechnicalTest.Domain/Redarbor.TechnicalTest.Domain.csproj" Id="505963ab-188a-4144-b177-22290d87001b" />
+    <Project Path="src/Redarbor.TechnicalTest.Infrastructure/Redarbor.TechnicalTest.Infrastructure.csproj" Id="d063bd1f-b511-44f2-8d31-a9931ea2d054" />
+  </Folder>
+  <Folder Name="/test/" />
+</Solution>

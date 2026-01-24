@@ -1,0 +1,6 @@
+@Redarbor.TechnicalTest.Api_HostAddress = http://localhost:5290
+
+GET {{Redarbor.TechnicalTest.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

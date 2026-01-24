@@ -1,0 +1,17 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+
+/src/Redarbor.TechnicalTest.Api/obj
+/src/Redarbor.TechnicalTest.Api/bin
+
+/src/Redarbor.TechnicalTest.Application/bin
+/src/Redarbor.TechnicalTest.Application/obj
+
+/src/Redarbor.TechnicalTest.Infrastructure/bin
+/src/Redarbor.TechnicalTest.Infrastructure/obj
+
+/src/Redarbor.TechnicalTest.Domain/bin
+/src/Redarbor.TechnicalTest.Domain/obj
