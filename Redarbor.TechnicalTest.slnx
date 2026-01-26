@@ -1,4 +1,9 @@
 <Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+    <File Path="Directory.Build.props" />
+    <File Path="Directory.Packages.props" />
+  </Folder>
   <Folder Name="/src/">
     <Project Path="src/Redarbor.TechnicalTest.Api/Redarbor.TechnicalTest.Api.csproj" Id="62358f4d-095b-41eb-ba0b-f46539c3692e" />
     <Project Path="src/Redarbor.TechnicalTest.Application/Redarbor.TechnicalTest.Application.csproj" Id="9d3e4e57-ed4b-4e4a-a94c-7d0d37619fe1" />
