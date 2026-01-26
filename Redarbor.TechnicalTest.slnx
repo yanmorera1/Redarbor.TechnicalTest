@@ -11,4 +11,7 @@
     <Project Path="src/Redarbor.TechnicalTest.Infrastructure/Redarbor.TechnicalTest.Infrastructure.csproj" Id="d063bd1f-b511-44f2-8d31-a9931ea2d054" />
   </Folder>
   <Folder Name="/test/" />
+  <Project Path="docker-compose.dcproj">
+    <Build />
+  </Project>
 </Solution>

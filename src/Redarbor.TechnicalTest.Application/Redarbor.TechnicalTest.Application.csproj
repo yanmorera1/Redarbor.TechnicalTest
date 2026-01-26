@@ -4,4 +4,8 @@
     <ProjectReference Include="..\Redarbor.TechnicalTest.Domain\Redarbor.TechnicalTest.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+  
 </Project>

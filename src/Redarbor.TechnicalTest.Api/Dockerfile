@@ -12,7 +12,12 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
+COPY ["Directory.Packages.props", "."]
+COPY ["Directory.Build.props", "."]
 COPY ["src/Redarbor.TechnicalTest.Api/Redarbor.TechnicalTest.Api.csproj", "src/Redarbor.TechnicalTest.Api/"]
+COPY ["src/Redarbor.TechnicalTest.Application/Redarbor.TechnicalTest.Application.csproj", "src/Redarbor.TechnicalTest.Application/"]
+COPY ["src/Redarbor.TechnicalTest.Domain/Redarbor.TechnicalTest.Domain.csproj", "src/Redarbor.TechnicalTest.Domain/"]
+COPY ["src/Redarbor.TechnicalTest.Infrastructure/Redarbor.TechnicalTest.Infrastructure.csproj", "src/Redarbor.TechnicalTest.Infrastructure/"]
 RUN dotnet restore "./src/Redarbor.TechnicalTest.Api/Redarbor.TechnicalTest.Api.csproj"
 COPY . .
 WORKDIR "/src/src/Redarbor.TechnicalTest.Api"

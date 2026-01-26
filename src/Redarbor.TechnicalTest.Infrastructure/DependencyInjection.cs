@@ -11,12 +11,12 @@ public static class DependencyInjection
     {
         string connectionString = configuration.GetConnectionString("Database");
 
-        services.AddScoped<ISaveChangesInterceptor, AuditableEntityInterceptor>();
         services.AddScoped<ISaveChangesInterceptor, DispatchDomainEventsInterceptor>();
+        services.AddScoped<ISaveChangesInterceptor, AuditableEntityInterceptor>();
 
         services.AddDbContext<ApplicationDbContext>((sp, options) => {
             options.AddInterceptors(sp.GetServices<ISaveChangesInterceptor>());
-            options.UseSqlServer(connectionString);
+            options.UseSqlServer(connectionString, options => options.EnableRetryOnFailure());
         });
 
         return services;

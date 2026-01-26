@@ -1,49 +1,58 @@
-﻿using MediatR;
+﻿using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Redarbor.TechnicalTest.Domain.Abstractions;
 
 namespace Redarbor.TechnicalTest.Infrastructure.Persistence.Interceptors;
 
-public class AuditableEntityInterceptor
-    (IPublisher publisher)
-    : SaveChangesInterceptor
+public class AuditableEntityInterceptor : SaveChangesInterceptor
 {
     public override InterceptionResult<int> SavingChanges(
         DbContextEventData eventData,
         InterceptionResult<int> result
     )
     {
-        DispatchDomainEventsAsync(eventData.Context).GetAwaiter().GetResult();
+        UpdateEntities(eventData.Context);
         return base.SavingChanges(eventData, result);
     }
 
-    public override async ValueTask<InterceptionResult<int>> SavingChangesAsync(
+    public override ValueTask<InterceptionResult<int>> SavingChangesAsync(
         DbContextEventData eventData,
         InterceptionResult<int> result,
         CancellationToken cancellationToken = default
     )
     {
-        await DispatchDomainEventsAsync(eventData.Context);
-        return await base.SavingChangesAsync(eventData, result, cancellationToken);
+        UpdateEntities(eventData.Context);
+        return base.SavingChangesAsync(eventData, result, cancellationToken);
     }
 
-    public async Task DispatchDomainEventsAsync(DbContext? context)
+    private void UpdateEntities(DbContext? context)
     {
-        if (context == null) return;
-
-        var aggregates = context.ChangeTracker
-            .Entries<IAggregate>()
-            .Where(e => e.Entity.DomainEvents.Any())
-            .Select(e => e.Entity);
-
-        var domainEvents = aggregates
-            .SelectMany(e => e.DomainEvents)
-            .ToList();
-
-        aggregates.ToList().ForEach(e => e.ClearDomainEvents());
-
-        foreach (var domainEvent in domainEvents)
+        if (context is null) return;
+        foreach (var entry in context.ChangeTracker.Entries<IEntity>())
         {
-            await publisher.Publish(domainEvent);
+            if (entry.State == EntityState.Added)
+            {
+                entry.Entity.CreatedBy = "system";
+                entry.Entity.CreatedOn = DateTime.UtcNow;
+            }
+            if (entry.State == EntityState.Modified ||
+                entry.State == EntityState.Added ||
+                entry.HasChangedOwned())
+            {
+                entry.Entity.UpdatedBy = "system";
+                entry.Entity.UpdatedOn = DateTime.UtcNow;
+            }
         }
+    }
+}
+
+public static class Extensions
+{
+    public static bool HasChangedOwned(this EntityEntry entry)
+    {
+        return entry.References.Any(r =>
+            r.TargetEntry != null &&
+            r.TargetEntry.Metadata.IsOwned() &&
+            (r.TargetEntry.State == EntityState.Added ||
+             r.TargetEntry.State == EntityState.Modified));
     }
 }

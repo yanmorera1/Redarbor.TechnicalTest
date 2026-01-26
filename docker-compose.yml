@@ -1,0 +1,9 @@
+services:
+  employeedb:
+    image: mcr.microsoft.com/mssql/server
+
+  redarbor.technicaltest.api:
+    image: ${DOCKER_REGISTRY-}redarbortechnicaltestapi
+    build:
+      context: .
+      dockerfile: src/Redarbor.TechnicalTest.Api/Dockerfile
