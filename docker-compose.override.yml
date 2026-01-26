@@ -1,0 +1,26 @@
+services:
+  employeedb:
+        container_name: employeedb
+        environment:
+            - ACCEPT_EULA=Y
+            - SA_PASSWORD=SwN12345678
+        restart: always
+        ports:
+            - "1433:1433"
+
+  redarbor.technicaltest.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=8080
+      - ASPNETCORE_HTTPS_PORTS=8081
+      - ConnectionStrings__Database=Server=employeedb;Database=EmployeeDb;User Id=sa;Password=SwN12345678;Encrypt=False;TrustServerCertificate=True
+    depends_on:
+      - employeedb
+    ports:
+      - "8080"
+      - "8081"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro

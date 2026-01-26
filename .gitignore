@@ -4,8 +4,11 @@
 
 /.vs
 
-/src/Redarbor.TechnicalTest.Api/obj
+/bin
+/obj
+
 /src/Redarbor.TechnicalTest.Api/bin
+/src/Redarbor.TechnicalTest.Api/obj
 
 /src/Redarbor.TechnicalTest.Application/bin
 /src/Redarbor.TechnicalTest.Application/obj
