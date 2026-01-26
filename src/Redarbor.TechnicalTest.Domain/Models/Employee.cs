@@ -1,6 +1,6 @@
 ﻿namespace Redarbor.TechnicalTest.Domain.Models;
 
-public class Employee : Aggregate<EmployId>
+public class Employee : Aggregate<EmployeeId>
 {
     public CompanyId CompanyId { get; private set; } = default!;
     public Email Email { get; private set; } = default!;
@@ -18,8 +18,9 @@ public class Employee : Aggregate<EmployId>
     }
     public Telephone Telephone { get; private set; } = default!;
     public string Username { get; private set; } = default!;
+
     public static Employee Create(
-        EmployId id,
+        EmployeeId id,
         CompanyId companyId,
         Email email,
         Password password,
