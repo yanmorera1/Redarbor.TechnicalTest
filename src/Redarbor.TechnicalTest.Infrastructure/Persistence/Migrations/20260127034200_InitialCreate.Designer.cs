@@ -13,7 +13,7 @@ using Redarbor.TechnicalTest.Infrastructure.Persistence;
 namespace Redarbor.TechnicalTest.Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20260126190721_InitialCreate")]
+    [Migration("20260127034200_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -65,7 +65,10 @@ namespace Redarbor.TechnicalTest.Infrastructure.Persistence.Migrations
             modelBuilder.Entity("Redarbor.TechnicalTest.Domain.Models.Employee", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("CompanyId")
                         .HasColumnType("int");
