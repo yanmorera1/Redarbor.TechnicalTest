@@ -10,3 +10,8 @@ global using Redarbor.TechnicalTest.Application.Interfaces.Factories;
 global using Redarbor.TechnicalTest.Domain.Interfaces.Repositories;
 global using Redarbor.TechnicalTest.Domain.Models;
 global using Redarbor.TechnicalTest.Domain.ValueObjects;
+global using Redarbor.TechnicalTest.Infrastructure.Persistence;
+global using Redarbor.TechnicalTest.Infrastructure.Persistence.Configurations.DapperHandlers;
+global using Redarbor.TechnicalTest.Infrastructure.Persistence.Factories;
+global using Redarbor.TechnicalTest.Infrastructure.Persistence.Interceptors;
+global using Redarbor.TechnicalTest.Infrastructure.Repositories;

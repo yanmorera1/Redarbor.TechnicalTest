@@ -1,9 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Redarbor.TechnicalTest.Infrastructure.Persistence;
-using Redarbor.TechnicalTest.Infrastructure.Persistence.Factories;
-using Redarbor.TechnicalTest.Infrastructure.Persistence.Interceptors;
-using Redarbor.TechnicalTest.Infrastructure.Repositories;
 
 namespace Redarbor.TechnicalTest.Infrastructure;
 
@@ -26,6 +22,23 @@ public static class DependencyInjection
         services.AddScoped<IEmployeeRepository, EmployeeRepository>();
         services.AddScoped<IApplicationDbContext, ApplicationDbContext>();
 
+        ConfigureTypeHandlers();
+
         return services;
+    }
+
+    public static void ConfigureTypeHandlers()
+    {
+        //Ids
+        SqlMapper.AddTypeHandler(new StronglyTypedIdTypeHandler<EmployeeId, int>(EmployeeId.Of));
+        SqlMapper.AddTypeHandler(new StronglyTypedIdTypeHandler<CompanyId, int>(CompanyId.Of));
+        SqlMapper.AddTypeHandler(new StronglyTypedIdTypeHandler<PortalId, int>(PortalId.Of));
+        SqlMapper.AddTypeHandler(new StronglyTypedIdTypeHandler<RoleId, int>(RoleId.Of));
+
+        //VOs
+        SqlMapper.AddTypeHandler(new StronglyTypedIdTypeHandler<Email, string>(Email.Create));
+        SqlMapper.AddTypeHandler(new StronglyTypedIdTypeHandler<Fax, string>(Fax.Create));
+        SqlMapper.AddTypeHandler(new StronglyTypedIdTypeHandler<Password, string>(Password.Create));
+        SqlMapper.AddTypeHandler(new StronglyTypedIdTypeHandler<Telephone, string>(Telephone.Create));
     }
 }

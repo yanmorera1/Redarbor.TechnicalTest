@@ -5,6 +5,8 @@ public interface IEmployeeRepository
     Task AddAsync(Employee employeem, CancellationToken cancellationToken);
     Task UpdateAsync(Employee employee, CancellationToken cancellationToken);
     Task DeleteAsync(Employee employee, CancellationToken cancellationToken);
+    Task<long> LongCountAsync(CancellationToken cancellationToken);
     Task<Employee?> GetByIdAsync(int id);
     Task<IEnumerable<Employee>> GetAllAsync();
+    Task<IEnumerable<Employee>> GetAllPaginatedAsync(int pageIndex, int pageSize, string orderBy);
 }

@@ -15,8 +15,6 @@ public class Telephone
             throw new DomainException("Invalid telephone format");
         }
 
-        value = value.SanitizeString();
-
         return new Telephone(value);
     }
 
