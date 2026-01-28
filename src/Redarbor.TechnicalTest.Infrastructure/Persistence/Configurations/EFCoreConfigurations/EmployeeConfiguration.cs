@@ -1,4 +1,4 @@
-﻿namespace Redarbor.TechnicalTest.Infrastructure.Persistence.Configurations;
+﻿namespace Redarbor.TechnicalTest.Infrastructure.Persistence.Configurations.EFCoreConfigurations;
 
 public class EmployeeConfiguration : IEntityTypeConfiguration<Employee>
 {
