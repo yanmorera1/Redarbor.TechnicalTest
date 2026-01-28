@@ -10,7 +10,10 @@
     <Project Path="src/Redarbor.TechnicalTest.Domain/Redarbor.TechnicalTest.Domain.csproj" Id="505963ab-188a-4144-b177-22290d87001b" />
     <Project Path="src/Redarbor.TechnicalTest.Infrastructure/Redarbor.TechnicalTest.Infrastructure.csproj" Id="d063bd1f-b511-44f2-8d31-a9931ea2d054" />
   </Folder>
-  <Folder Name="/test/" />
+  <Folder Name="/src/BuildingBlocks/">
+    <Project Path="src/BuildingBlocks/BuildingBlocks/BuildingBlocks.csproj" Id="439e16f5-4968-4d76-b5c4-baa5f697a507" />
+  </Folder>
+  <Folder Name="/src/tests/" />
   <Project Path="docker-compose.dcproj">
     <Build />
   </Project>
