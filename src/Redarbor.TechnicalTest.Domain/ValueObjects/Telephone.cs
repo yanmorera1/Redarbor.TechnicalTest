@@ -2,7 +2,7 @@
 
 public class Telephone
 {
-    private const string TELEPHONE_REGEX_FORMAT = @"^\d{3}\.\d{3}\.\d{3}$";
+    private static readonly Regex TelephoneRegex = new(@"^\d{3}\.\d{3}\.\d{3}$", RegexOptions.Compiled);
     public string Value { get; }
     private Telephone(string value) => Value = value;
 
@@ -10,10 +10,13 @@ public class Telephone
     {
         if (string.IsNullOrWhiteSpace(value)) return new Telephone(string.Empty);
 
-        if (!Regex.IsMatch(value, TELEPHONE_REGEX_FORMAT))
+        if (!TelephoneRegex.IsMatch(value))
         {
             throw new DomainException("Invalid telephone format");
         }
+
+        value = value.SanitizeString();
+
         return new Telephone(value);
     }
 

@@ -2,7 +2,7 @@
 
 public record CompanyId(int Value)
 {
-    public static CompanyId Create(int value)
+    public static CompanyId Of(int value)
     {
         if (value <= 0) throw new DomainException("The Id should be positive");
         return new CompanyId(value);

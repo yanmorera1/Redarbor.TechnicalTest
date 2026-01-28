@@ -8,7 +8,7 @@ public class RoleConfiguration : IEntityTypeConfiguration<Role>
         builder.Property(r => r.Id)
             .HasConversion(
                 roleId => roleId.Value,
-                dbId => RoleId.Create(dbId)
+                dbId => RoleId.Of(dbId)
             );
 
         builder.Property(r => r.Name)

@@ -2,9 +2,9 @@
 
 public record EmployeeId(int Value)
 {
-    public static EmployeeId Create(int value)
+    public static EmployeeId Of(int value)
     {
-        if (value <= 0) throw new DomainException("The Id should be positive");
+        //if (value <= 0) throw new DomainException("The Id should be positive");
         return new EmployeeId(value);
     }
 }

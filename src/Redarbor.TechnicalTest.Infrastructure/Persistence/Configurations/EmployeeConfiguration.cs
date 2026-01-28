@@ -8,8 +8,8 @@ public class EmployeeConfiguration : IEntityTypeConfiguration<Employee>
         builder.Property(e => e.Id)
             .HasConversion(
                 employeeId => employeeId.Value,
-                dbId => EmployeeId.Create(dbId)
-            );
+                dbId => EmployeeId.Of(dbId)
+            ).UseIdentityColumn(1, 1);
 
         builder.HasOne<Company>()
             .WithMany()

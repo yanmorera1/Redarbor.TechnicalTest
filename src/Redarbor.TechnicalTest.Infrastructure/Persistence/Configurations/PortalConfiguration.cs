@@ -8,7 +8,7 @@ public class PortalConfiguration : IEntityTypeConfiguration<Portal>
         builder.Property(p => p.Id)
             .HasConversion(
                 portalId => portalId.Value,
-                dbId => PortalId.Create(dbId)
+                dbId => PortalId.Of(dbId)
             );
 
         builder.Property(c => c.Name)

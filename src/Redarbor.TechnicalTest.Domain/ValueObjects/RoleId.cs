@@ -2,7 +2,7 @@
 
 public record RoleId(int Value)
 {
-    public static RoleId Create(int value)
+    public static RoleId Of(int value)
     {
         if (value <= 0) throw new DomainException("The Id should be positive");
         return new RoleId(value);
