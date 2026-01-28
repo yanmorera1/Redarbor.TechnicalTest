@@ -8,7 +8,7 @@ public class CompanyConfiguration : IEntityTypeConfiguration<Company>
         builder.Property(c => c.Id)
             .HasConversion(
                 companyId => companyId.Value,
-                dbId => CompanyId.Create(dbId)
+                dbId => CompanyId.Of(dbId)
             );
 
         builder.Property(c => c.Name)

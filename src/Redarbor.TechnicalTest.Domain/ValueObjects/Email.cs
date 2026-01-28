@@ -2,7 +2,7 @@
 
 public record Email
 {
-    private const string EMAIL_REGEX_FORMAT = @"/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/i";
+    private static readonly Regex EmailRegex = new (@"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$", RegexOptions.Compiled);
     public string Value { get; }
     private Email(string value)
     {
@@ -12,7 +12,7 @@ public record Email
     public static Email Create(string value)
     {
         ArgumentNullException.ThrowIfNull(value, nameof(value));
-        if (string.IsNullOrWhiteSpace(value) || !Regex.IsMatch(value, EMAIL_REGEX_FORMAT))
+        if (string.IsNullOrWhiteSpace(value) || !EmailRegex.IsMatch(value))
         {
             throw new DomainException("Invalid email format");
         }

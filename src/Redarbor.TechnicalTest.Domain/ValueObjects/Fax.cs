@@ -2,7 +2,7 @@
 
 public record Fax
 {
-    private const string FAX_REG_FORMAT = @"^\+?[0-9\s\-\(\)]{7,20}$";
+    private static readonly Regex FaxRegex = new(@"^\+?[0-9\s\-\(\)]{7,20}$", RegexOptions.Compiled);
     public string Value { get; }
     private Fax(string value)
     {
@@ -13,7 +13,9 @@ public record Fax
     {
         if (string.IsNullOrWhiteSpace(value)) return new Fax(string.Empty);
 
-        if (!Regex.IsMatch(value, FAX_REG_FORMAT))
+        value = value.SanitizeString();
+
+        if (!FaxRegex.IsMatch(value))
         {
             throw new DomainException("Invalid fax format");
         }
