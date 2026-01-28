@@ -57,4 +57,23 @@ public class Employee : Aggregate<EmployeeId>
 
         return employee;
     }
+
+    public void Update(
+        string name,
+        string userName,
+        Email email,
+        Telephone telephone,
+        Fax fax,
+        EmployeeStatus status
+        )
+    {
+        Name = name;
+        Username = userName;
+        Email = email;
+        Telephone = telephone;
+        Fax = fax;
+        Status = status;
+
+        AddDomainEvent(new EmployeeUpdatedEvent(this));
+    }
 }
