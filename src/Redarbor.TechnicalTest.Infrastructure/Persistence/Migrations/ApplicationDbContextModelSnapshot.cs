@@ -62,7 +62,10 @@ namespace Redarbor.TechnicalTest.Infrastructure.Persistence.Migrations
             modelBuilder.Entity("Redarbor.TechnicalTest.Domain.Models.Employee", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("CompanyId")
                         .HasColumnType("int");

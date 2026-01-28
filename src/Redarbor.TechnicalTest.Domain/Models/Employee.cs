@@ -20,7 +20,6 @@ public class Employee : Aggregate<EmployeeId>
     public string Username { get; private set; } = default!;
 
     public static Employee Create(
-        EmployeeId id,
         CompanyId companyId,
         Email email,
         Password password,
@@ -41,7 +40,6 @@ public class Employee : Aggregate<EmployeeId>
 
         Employee employee = new()
         {
-            Id = id,
             CompanyId = companyId,
             Email = email,
             Password = password,
