@@ -1,6 +1,6 @@
 ﻿namespace Redarbor.TechnicalTest.Application.Employees.Commands.CreateEmployee;
 
-public class CreateEmployeeHandler
+internal class CreateEmployeeHandler
     (IEmployeeRepository employeeRepository)
     : ICommandHandler<CreateEmployeeCommand, CreateEmployeeResult>
 {
@@ -13,7 +13,7 @@ public class CreateEmployeeHandler
         return new CreateEmployeeResult(employee.Id.Value);
     }
 
-    private Employee CreateEmployee(EmployeeDto employee)
+    private Employee CreateEmployee(CreateEmployeeDto employee)
     {
         var newEmployee = Employee.Create(
             CompanyId.Of(employee.CompanyId),

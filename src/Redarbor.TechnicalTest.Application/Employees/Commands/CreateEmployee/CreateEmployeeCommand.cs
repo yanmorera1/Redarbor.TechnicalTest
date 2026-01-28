@@ -1,7 +1,7 @@
 ﻿namespace Redarbor.TechnicalTest.Application.Employees.Commands.CreateEmployee;
 
 public record CreateEmployeeCommand
-    (EmployeeDto Employee)
+    (CreateEmployeeDto Employee)
     : ICommand<CreateEmployeeResult>;
 
 public record CreateEmployeeResult(int Id);
@@ -10,7 +10,28 @@ public class CreateEmployeeCommandValidator : AbstractValidator<CreateEmployeeCo
 {
     public CreateEmployeeCommandValidator()
     {
-        RuleFor(x => x.Employee).NotNull();
-        RuleFor(x => x.Employee.Name).NotEmpty().MaximumLength(100);
+        RuleFor(x => x.Employee.Username)
+            .MaximumLength(100)
+            .NotEmpty().WithMessage("{PropertyName} cannot be empty");
+
+        RuleFor(x => x.Employee.Password)
+            .MaximumLength(150)
+            .NotEmpty().WithMessage("{PropertyName} cannot be empty");
+
+        RuleFor(x => x.Employee.Email)
+            .NotEmpty().WithMessage("{PropertyName} cannot be empty")
+            .EmailAddress().WithMessage("{PropertyName} should be an email address");
+
+        RuleFor(x => x.Employee.CompanyId)
+            .NotNull().WithMessage("{PropertyName} cannot be null");
+
+        RuleFor(x => x.Employee.PortalId)
+            .NotNull().WithMessage("{PropertyName} cannot be null");
+
+        RuleFor(x => x.Employee.RoleId)
+            .NotNull().WithMessage("{PropertyName} cannot be null");
+
+        RuleFor(x => x.Employee.StatusId)
+            .NotNull().WithMessage("{PropertyName} cannot be null");
     }
 }

@@ -1,6 +1,8 @@
-﻿namespace Redarbor.TechnicalTest.Application.Dtos;
+﻿using Redarbor.TechnicalTest.Domain.Enums;
 
-public record EmployeeDto(
+namespace Redarbor.TechnicalTest.Application.Dtos;
+
+public record CreateEmployeeDto(
         int CompanyId,
         string Email,
         string? Fax,
