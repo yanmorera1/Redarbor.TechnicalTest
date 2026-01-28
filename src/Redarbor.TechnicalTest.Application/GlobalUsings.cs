@@ -1,10 +1,13 @@
 ﻿global using System.Data;
+global using BuildingBlocks.CQRS;
 global using FluentValidation;
 global using MediatR;
 global using Microsoft.EntityFrameworkCore;
-
-global using BuildingBlocks.CQRS;
+global using Microsoft.Extensions.Logging;
 global using Redarbor.TechnicalTest.Application.Dtos;
+global using Redarbor.TechnicalTest.Application.Exceptions;
+global using Redarbor.TechnicalTest.Application.Extensions;
+global using Redarbor.TechnicalTest.Domain.Events;
 global using Redarbor.TechnicalTest.Domain.Interfaces.Repositories;
 global using Redarbor.TechnicalTest.Domain.Models;
 global using Redarbor.TechnicalTest.Domain.ValueObjects;
