@@ -6,7 +6,7 @@ public class CreateEmployee : ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
     {
-        app.MapPost("/redarbor", async (ISender sender, EmployeeDto request) =>
+        app.MapPost("/redarbor", async (ISender sender, CreateEmployeeDto request) =>
         {
             var command = new CreateEmployeeCommand(request);
             var result = await sender.Send(command);

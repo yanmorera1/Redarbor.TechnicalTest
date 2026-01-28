@@ -18,4 +18,6 @@
 
 /src/Redarbor.TechnicalTest.Domain/bin
 /src/Redarbor.TechnicalTest.Domain/obj
+
 /src/BuildingBlocks/BuildingBlocks/obj
+/src/BuildingBlocks/BuildingBlocks/bin
