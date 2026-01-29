@@ -32,6 +32,31 @@ public class CreateEmployeeHandlerTests
             ));
 
         _employeeRepository
+            .Setup(m => m.IsAnyEmployeeWithEmail(command.Employee.Email))
+            .ReturnsAsync(false)
+            .Verifiable();
+
+        _employeeRepository
+            .Setup(m => m.IsAnyEmployeeWithUsename(command.Employee.Username))
+            .ReturnsAsync(false)
+            .Verifiable();
+
+        _employeeRepository
+            .Setup(m => m.CompanyExists(command.Employee.CompanyId))
+            .ReturnsAsync(true)
+            .Verifiable();
+
+        _employeeRepository
+            .Setup(m => m.PortalExists(command.Employee.PortalId))
+            .ReturnsAsync(true)
+            .Verifiable();
+
+        _employeeRepository
+            .Setup(m => m.RoleExists(command.Employee.RoleId))
+            .ReturnsAsync(true)
+            .Verifiable();
+
+        _employeeRepository
             .Setup(m => m.AddAsync(It.IsAny<Employee>(), CancellationToken.None))
             .ReturnsAsync(new EmployeeId(1))
             .Verifiable();
@@ -41,6 +66,21 @@ public class CreateEmployeeHandlerTests
 
         // Assert
         Assert.Equal(1, result.Id);
+
+        _employeeRepository
+            .Verify(m => m.IsAnyEmployeeWithEmail(command.Employee.Email), Times.Once);
+
+        _employeeRepository
+            .Verify(m => m.IsAnyEmployeeWithUsename(command.Employee.Username), Times.Once);
+
+        _employeeRepository
+            .Verify(m => m.CompanyExists(command.Employee.CompanyId), Times.Once);
+
+        _employeeRepository
+            .Verify(m => m.PortalExists(command.Employee.PortalId), Times.Once);
+
+        _employeeRepository
+            .Verify(m => m.RoleExists(command.Employee.RoleId), Times.Once);
 
         _employeeRepository
             .Verify(m => m.AddAsync(It.IsAny<Employee>(), CancellationToken.None), Times.Once);
@@ -63,10 +103,50 @@ public class CreateEmployeeHandlerTests
             Username: "testuser"
             ));
 
+        _employeeRepository
+            .Setup(m => m.IsAnyEmployeeWithEmail(command.Employee.Email))
+            .ReturnsAsync(false)
+            .Verifiable();
+
+        _employeeRepository
+            .Setup(m => m.IsAnyEmployeeWithUsename(command.Employee.Username))
+            .ReturnsAsync(false)
+            .Verifiable();
+
+        _employeeRepository
+            .Setup(m => m.CompanyExists(command.Employee.CompanyId))
+            .ReturnsAsync(true)
+            .Verifiable();
+
+        _employeeRepository
+            .Setup(m => m.PortalExists(command.Employee.PortalId))
+            .ReturnsAsync(true)
+            .Verifiable();
+
+        _employeeRepository
+            .Setup(m => m.RoleExists(command.Employee.RoleId))
+            .ReturnsAsync(true)
+            .Verifiable();
+
         // Act & Assert
         var exception = await Assert.ThrowsAnyAsync<DomainException>(() => _handler.Handle(command, CancellationToken.None));
 
         Assert.Equal("Domain Exception \"The Id should be positive\" throws from Domain Layer", exception.Message);
+
+        _employeeRepository
+            .Verify(m => m.IsAnyEmployeeWithEmail(command.Employee.Email), Times.Once);
+
+        _employeeRepository
+            .Verify(m => m.IsAnyEmployeeWithUsename(command.Employee.Username), Times.Once);
+
+        _employeeRepository
+            .Verify(m => m.CompanyExists(command.Employee.CompanyId), Times.Once);
+
+        _employeeRepository
+            .Verify(m => m.PortalExists(command.Employee.PortalId), Times.Once);
+
+        _employeeRepository
+            .Verify(m => m.RoleExists(command.Employee.RoleId), Times.Once);
     }
 
     [Fact]
@@ -86,9 +166,49 @@ public class CreateEmployeeHandlerTests
             Username: "testuser"
             ));
 
+        _employeeRepository
+            .Setup(m => m.IsAnyEmployeeWithEmail(command.Employee.Email))
+            .ReturnsAsync(false)
+            .Verifiable();
+
+        _employeeRepository
+            .Setup(m => m.IsAnyEmployeeWithUsename(command.Employee.Username))
+            .ReturnsAsync(false)
+            .Verifiable();
+
+        _employeeRepository
+            .Setup(m => m.CompanyExists(command.Employee.CompanyId))
+            .ReturnsAsync(true)
+            .Verifiable();
+
+        _employeeRepository
+            .Setup(m => m.PortalExists(command.Employee.PortalId))
+            .ReturnsAsync(true)
+            .Verifiable();
+
+        _employeeRepository
+            .Setup(m => m.RoleExists(command.Employee.RoleId))
+            .ReturnsAsync(true)
+            .Verifiable();
+
         // Act & Assert
         var exception = await Assert.ThrowsAnyAsync<DomainException>(() => _handler.Handle(command, CancellationToken.None));
 
         Assert.Equal("Domain Exception \"Invalid email format\" throws from Domain Layer", exception.Message);
+
+        _employeeRepository
+            .Verify(m => m.IsAnyEmployeeWithEmail(command.Employee.Email), Times.Once);
+
+        _employeeRepository
+            .Verify(m => m.IsAnyEmployeeWithUsename(command.Employee.Username), Times.Once);
+
+        _employeeRepository
+            .Verify(m => m.CompanyExists(command.Employee.CompanyId), Times.Once);
+
+        _employeeRepository
+            .Verify(m => m.PortalExists(command.Employee.PortalId), Times.Once);
+
+        _employeeRepository
+            .Verify(m => m.RoleExists(command.Employee.RoleId), Times.Once);
     }
 }

@@ -9,4 +9,9 @@ public interface IEmployeeRepository
     Task<Employee?> GetByIdAsync(int id);
     Task<IEnumerable<Employee>> GetAllAsync();
     Task<IEnumerable<Employee>> GetAllPaginatedAsync(int pageIndex, int pageSize, string orderBy);
+    Task<bool> IsAnyEmployeeWithEmail(string email);
+    Task<bool> IsAnyEmployeeWithUsename(string userName);
+    Task<bool> CompanyExists(int companyId);
+    Task<bool> PortalExists(int portalId);
+    Task<bool> RoleExists(int roleId);
 }

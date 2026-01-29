@@ -17,11 +17,21 @@ public class UpdateEmployeeHandler
             throw new EmployeeNotFoundException(command.Employee.Id);
         }
 
+        await ValidateUpdatedEmployee(command.Employee);
+
         UpdateEmployeeWithNewValues(employee, command.Employee);
 
         await employeeRepository.UpdateAsync(employee, cancellationToken);
 
         return new UpdateEmployeeResult(IsSuccess: true);
+    }
+
+    private async Task ValidateUpdatedEmployee(UpdateEmployeeDto employee)
+    {
+        if (employee.Email is not null && await employeeRepository.IsAnyEmployeeWithEmail(employee.Email))
+            throw new InvalidEmployeeException($"Invalid email address");
+        if (employee.Username is not null && await employeeRepository.IsAnyEmployeeWithUsename(employee.Username))
+            throw new InvalidEmployeeException($"Invalid user name");
     }
 
     private void UpdateEmployeeWithNewValues(Employee employee, UpdateEmployeeDto employeeDto)

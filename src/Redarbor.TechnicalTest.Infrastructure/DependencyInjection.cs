@@ -1,5 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Redarbor.TechnicalTest.Application.Interfaces.Common;
+using Redarbor.TechnicalTest.Infrastructure.Common;
 
 namespace Redarbor.TechnicalTest.Infrastructure;
 
@@ -23,6 +25,9 @@ public static class DependencyInjection
         services.AddScoped<IApplicationDbContext, ApplicationDbContext>();
 
         ConfigureTypeHandlers();
+
+        services.AddHttpContextAccessor();
+        services.AddScoped<ICurrentUserService, CurrentUserService>();
 
         return services;
     }
