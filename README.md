@@ -52,6 +52,28 @@ keycloak:
     - ./realm-export.json:/opt/keycloak/data/import/realm.json:ro
 ```
 
+## Autenticación y Pruebas con Postman
+
+Para realizar las pruebas de los endpoints protegidos, se incluye una colección de Postman en la raíz del proyecto: `Redarbor.postman_collection.json`.
+
+### Configuración de OAuth 2.0 en Postman
+En lugar de solicitar el token manualmente, la colección está configurada para obtenerlo directamente desde Keycloak siguiendo estos pasos:
+
+1. **Importar la colección**: Cargue el archivo `Redarbor.postman_collection.json` en Postman.
+2. **Acceder a la pestaña Authorization**: Seleccione la colección o una petición específica y diríjase a la pestaña **Authorization**.
+3. **Seleccionar Tipo**: Asegúrese de que el campo *Type* esté configurado como **OAuth 2.0**.
+4. **Obtener Nuevo Token**:
+   * Desplácese hasta el final del panel de configuración de la derecha.
+   * Haga clic en el botón naranja **"Get New Access Token"**.
+5. **Autenticación**:
+   * Se abrirá una ventana de inicio de sesión de Keycloak.
+   * Ingrese las credenciales de prueba:
+     * **Usuario**: `employee`
+     * **Contraseña**: `employee12345`
+6. **Usar Token**: Una vez autenticado, Postman mostrará el token generado. Haga clic en **"Use Token"**.
+
+A partir de este momento, todas las peticiones que hereden la autenticación de la colección incluirán automáticamente el encabezado `Authorization: Bearer <token>` necesario para operar la API.
+
 ## Compilar y ejecutar localmente
 1. Restaurar paquetes:
    ```

@@ -1,0 +1,409 @@
+{
+  "info": {
+    "_postman_id": "5cee1f3e-ec00-4e58-8f30-caac387ca231",
+    "name": "Redarbor",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "17644729"
+  },
+  "item": [
+    {
+      "name": "Create Employee",
+      "request": {
+        "auth": {
+          "type": "oauth2",
+          "oauth2": [
+            {
+              "key": "scope",
+              "value": "redarbor_api.all",
+              "type": "string"
+            },
+            {
+              "key": "clientId",
+              "value": "postman",
+              "type": "string"
+            },
+            {
+              "key": "accessTokenUrl",
+              "value": "http://localhost:8080/realms/redarbor/protocol/openid-connect/token",
+              "type": "string"
+            },
+            {
+              "key": "authUrl",
+              "value": "http://localhost:8080/realms/redarbor/protocol/openid-connect/auth",
+              "type": "string"
+            },
+            {
+              "key": "redirect_uri",
+              "value": "https://oauth.pstmn.io/v1/callback",
+              "type": "string"
+            },
+            {
+              "key": "grant_type",
+              "value": "authorization_code_with_pkce",
+              "type": "string"
+            },
+            {
+              "key": "addTokenTo",
+              "value": "header",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"CompanyId\": 1,\r\n    \"Email\": \"test1@test.test\",\r\n    \"Fax\": \"000.000.000\",\r\n    \"Name\": \"test1\",\r\n    \"Password\": \"test\",\r\n    \"PortalId\": 1,\r\n    \"RoleId\": 1,\r\n    \"StatusId\": 1,\r\n    \"Telephone\": \"000.000.000\",\r\n    \"Username\": \"test1\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseURL}}/redarbor",
+          "host": [
+            "{{baseURL}}"
+          ],
+          "path": [
+            "redarbor"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Update Employee",
+      "request": {
+        "auth": {
+          "type": "oauth2",
+          "oauth2": [
+            {
+              "key": "scope",
+              "value": "redarbor_api.all",
+              "type": "string"
+            },
+            {
+              "key": "clientId",
+              "value": "postman",
+              "type": "string"
+            },
+            {
+              "key": "accessTokenUrl",
+              "value": "http://localhost:8080/realms/redarbor/protocol/openid-connect/token",
+              "type": "string"
+            },
+            {
+              "key": "authUrl",
+              "value": "http://localhost:8080/realms/redarbor/protocol/openid-connect/auth",
+              "type": "string"
+            },
+            {
+              "key": "redirect_uri",
+              "value": "https://oauth.pstmn.io/v1/callback",
+              "type": "string"
+            },
+            {
+              "key": "grant_type",
+              "value": "authorization_code_with_pkce",
+              "type": "string"
+            },
+            {
+              "key": "addTokenTo",
+              "value": "header",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"Id\": 1,\r\n    \"Email\": \"test1updated1@test.test\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseURL}}/redarbor",
+          "host": [
+            "{{baseURL}}"
+          ],
+          "path": [
+            "redarbor"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete Employee",
+      "request": {
+        "auth": {
+          "type": "oauth2",
+          "oauth2": [
+            {
+              "key": "scope",
+              "value": "redarbor_api.all",
+              "type": "string"
+            },
+            {
+              "key": "clientId",
+              "value": "postman",
+              "type": "string"
+            },
+            {
+              "key": "accessTokenUrl",
+              "value": "http://localhost:8080/realms/redarbor/protocol/openid-connect/token",
+              "type": "string"
+            },
+            {
+              "key": "authUrl",
+              "value": "http://localhost:8080/realms/redarbor/protocol/openid-connect/auth",
+              "type": "string"
+            },
+            {
+              "key": "redirect_uri",
+              "value": "https://oauth.pstmn.io/v1/callback",
+              "type": "string"
+            },
+            {
+              "key": "grant_type",
+              "value": "authorization_code_with_pkce",
+              "type": "string"
+            },
+            {
+              "key": "addTokenTo",
+              "value": "header",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{baseURL}}/redarbor/:id",
+          "host": [
+            "{{baseURL}}"
+          ],
+          "path": [
+            "redarbor",
+            ":id"
+          ],
+          "variable": [
+            {
+              "key": "id",
+              "value": "1"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Employee By Id",
+      "request": {
+        "auth": {
+          "type": "oauth2",
+          "oauth2": [
+            {
+              "key": "scope",
+              "value": "redarbor_api.all",
+              "type": "string"
+            },
+            {
+              "key": "clientId",
+              "value": "postman",
+              "type": "string"
+            },
+            {
+              "key": "accessTokenUrl",
+              "value": "http://localhost:8080/realms/redarbor/protocol/openid-connect/token",
+              "type": "string"
+            },
+            {
+              "key": "authUrl",
+              "value": "http://localhost:8080/realms/redarbor/protocol/openid-connect/auth",
+              "type": "string"
+            },
+            {
+              "key": "redirect_uri",
+              "value": "https://oauth.pstmn.io/v1/callback",
+              "type": "string"
+            },
+            {
+              "key": "grant_type",
+              "value": "authorization_code_with_pkce",
+              "type": "string"
+            },
+            {
+              "key": "addTokenTo",
+              "value": "header",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseURL}}/redarbor/:id",
+          "host": [
+            "{{baseURL}}"
+          ],
+          "path": [
+            "redarbor",
+            ":id"
+          ],
+          "variable": [
+            {
+              "key": "id",
+              "value": "1"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Employees",
+      "request": {
+        "auth": {
+          "type": "oauth2",
+          "oauth2": [
+            {
+              "key": "scope",
+              "value": "redarbor_api.all",
+              "type": "string"
+            },
+            {
+              "key": "clientId",
+              "value": "postman",
+              "type": "string"
+            },
+            {
+              "key": "accessTokenUrl",
+              "value": "http://localhost:8080/realms/redarbor/protocol/openid-connect/token",
+              "type": "string"
+            },
+            {
+              "key": "authUrl",
+              "value": "http://localhost:8080/realms/redarbor/protocol/openid-connect/auth",
+              "type": "string"
+            },
+            {
+              "key": "redirect_uri",
+              "value": "https://oauth.pstmn.io/v1/callback",
+              "type": "string"
+            },
+            {
+              "key": "grant_type",
+              "value": "authorization_code_with_pkce",
+              "type": "string"
+            },
+            {
+              "key": "addTokenTo",
+              "value": "header",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseURL}}/redarbor?PageIndex=1&PageSize=10",
+          "host": [
+            "{{baseURL}}"
+          ],
+          "path": [
+            "redarbor"
+          ],
+          "query": [
+            {
+              "key": "PageIndex",
+              "value": "1"
+            },
+            {
+              "key": "PageSize",
+              "value": "10"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Health",
+      "request": {
+        "auth": {
+          "type": "oauth2",
+          "oauth2": [
+            {
+              "key": "scope",
+              "value": "redarbor_api.all",
+              "type": "string"
+            },
+            {
+              "key": "clientId",
+              "value": "postman",
+              "type": "string"
+            },
+            {
+              "key": "accessTokenUrl",
+              "value": "http://localhost:8080/realms/redarbor/protocol/openid-connect/token",
+              "type": "string"
+            },
+            {
+              "key": "authUrl",
+              "value": "http://localhost:8080/realms/redarbor/protocol/openid-connect/auth",
+              "type": "string"
+            },
+            {
+              "key": "redirect_uri",
+              "value": "https://oauth.pstmn.io/v1/callback",
+              "type": "string"
+            },
+            {
+              "key": "grant_type",
+              "value": "authorization_code_with_pkce",
+              "type": "string"
+            },
+            {
+              "key": "addTokenTo",
+              "value": "header",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseURL}}/health",
+          "host": [
+            "{{baseURL}}"
+          ],
+          "path": [
+            "health"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "New Request",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseURL",
+      "value": "",
+      "type": "default"
+    }
+  ]
+}
