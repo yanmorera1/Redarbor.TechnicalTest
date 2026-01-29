@@ -1,14 +1,20 @@
-﻿namespace Redarbor.TechnicalTest.Application.Employees.Commands.UpdateEmployee;
+﻿using Ardalis.GuardClauses;
 
-internal class UpdateEmployeeHandler
+namespace Redarbor.TechnicalTest.Application.Employees.Commands.UpdateEmployee;
+
+public class UpdateEmployeeHandler
     (IEmployeeRepository employeeRepository)
     : ICommandHandler<UpdateEmployeeCommand, UpdateEmployeeResult>
 {
     public async Task<UpdateEmployeeResult> Handle(UpdateEmployeeCommand command, CancellationToken cancellationToken)
     {
-        Employee employee = await employeeRepository.GetByIdAsync(command.Employee.Id.Value);
+        Guard.Against.Null(command, nameof(command));
+        Guard.Against.Null(command.Employee.Id, nameof(command.Employee.Id));
+        Guard.Against.NegativeOrZero(command.Employee.Id, nameof(command.Employee.Id));
+
+        Employee employee = await employeeRepository.GetByIdAsync(command.Employee.Id);
         if (employee is null) {
-            throw new EmployeeNotFoundException(command.Employee.Id.Value);
+            throw new EmployeeNotFoundException(command.Employee.Id);
         }
 
         UpdateEmployeeWithNewValues(employee, command.Employee);

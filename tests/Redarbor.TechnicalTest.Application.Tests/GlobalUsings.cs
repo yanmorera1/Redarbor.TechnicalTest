@@ -1,0 +1,11 @@
+﻿global using Ardalis.GuardClauses;
+global using BuildingBlocks.Pagination;
+global using Moq;
+global using Redarbor.TechnicalTest.Application.Dtos;
+global using Redarbor.TechnicalTest.Application.Exceptions;
+global using Redarbor.TechnicalTest.Application.Extensions;
+global using Redarbor.TechnicalTest.Domain.Exceptions;
+global using Redarbor.TechnicalTest.Domain.Interfaces.Repositories;
+global using Redarbor.TechnicalTest.Domain.Models;
+global using Redarbor.TechnicalTest.Domain.ValueObjects;
+global using Xunit;

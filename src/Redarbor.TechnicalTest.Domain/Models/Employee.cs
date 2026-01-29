@@ -1,4 +1,6 @@
-﻿namespace Redarbor.TechnicalTest.Domain.Models;
+﻿using System.Runtime.CompilerServices;
+
+namespace Redarbor.TechnicalTest.Domain.Models;
 
 public class Employee : Aggregate<EmployeeId>
 {
@@ -59,21 +61,54 @@ public class Employee : Aggregate<EmployeeId>
     }
 
     public void Update(
-        string name,
-        string userName,
-        Email email,
-        Telephone telephone,
-        Fax fax,
-        EmployeeStatus status
-        )
+    string? name,
+    string? userName,
+    Email? email,
+    Telephone? telephone,
+    Fax? fax,
+    EmployeeStatus? status)
     {
-        Name = name;
-        Username = userName;
-        Email = email;
-        Telephone = telephone;
-        Fax = fax;
-        Status = status;
+        bool hasChanged = false;
 
-        AddDomainEvent(new EmployeeUpdatedEvent(this));
+        if (!string.IsNullOrWhiteSpace(name) && Name != name)
+        {
+            Name = name;
+            hasChanged = true;
+        }
+
+        if (!string.IsNullOrWhiteSpace(userName) && Username != userName)
+        {
+            Username = userName;
+            hasChanged = true;
+        }
+
+        if (email is not null && Email != email)
+        {
+            Email = email;
+            hasChanged = true;
+        }
+
+        if (telephone is not null && !string.IsNullOrEmpty(telephone.Value) && Telephone != telephone)
+        {
+            Telephone = telephone;
+            hasChanged = true;
+        }
+
+        if (fax is not null && !string.IsNullOrEmpty(fax.Value) && Fax != fax)
+        {
+            Fax = fax;
+            hasChanged = true;
+        }
+
+        if (status.HasValue && Status != status.Value)
+        {
+            Status = status.Value;
+            hasChanged = true;
+        }
+
+        if (hasChanged)
+        {
+            AddDomainEvent(new EmployeeUpdatedEvent(this));
+        }
     }
 }
