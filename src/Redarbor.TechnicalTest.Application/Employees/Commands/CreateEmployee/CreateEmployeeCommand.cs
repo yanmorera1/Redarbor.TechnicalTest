@@ -23,15 +23,19 @@ public class CreateEmployeeCommandValidator : AbstractValidator<CreateEmployeeCo
             .EmailAddress().WithMessage("{PropertyName} should be an email address");
 
         RuleFor(x => x.Employee.CompanyId)
+            .NotEmpty().WithMessage("{PropertyName} cannot be null")
             .NotNull().WithMessage("{PropertyName} cannot be null");
 
         RuleFor(x => x.Employee.PortalId)
+            .NotEmpty().WithMessage("{PropertyName} cannot be null")
             .NotNull().WithMessage("{PropertyName} cannot be null");
 
         RuleFor(x => x.Employee.RoleId)
+            .NotEmpty().WithMessage("{PropertyName} cannot be null")
             .NotNull().WithMessage("{PropertyName} cannot be null");
 
         RuleFor(x => x.Employee.StatusId)
+            .NotEmpty().WithMessage("{PropertyName} cannot be null")
             .NotNull().WithMessage("{PropertyName} cannot be null");
     }
 }
