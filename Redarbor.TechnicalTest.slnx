@@ -3,6 +3,8 @@
     <File Path=".editorconfig" />
     <File Path="Directory.Build.props" />
     <File Path="Directory.Packages.props" />
+    <File Path="README.md" />
+    <File Path="realm-export.json" />
   </Folder>
   <Folder Name="/src/">
     <Project Path="src/Redarbor.TechnicalTest.Api/Redarbor.TechnicalTest.Api.csproj" Id="62358f4d-095b-41eb-ba0b-f46539c3692e" />
