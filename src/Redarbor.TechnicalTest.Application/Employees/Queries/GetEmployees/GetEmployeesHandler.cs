@@ -1,6 +1,4 @@
-﻿using Ardalis.GuardClauses;
-using BuildingBlocks.Pagination;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
+﻿using BuildingBlocks.Pagination;
 
 namespace Redarbor.TechnicalTest.Application.Employees.Queries.GetEmployees;
 

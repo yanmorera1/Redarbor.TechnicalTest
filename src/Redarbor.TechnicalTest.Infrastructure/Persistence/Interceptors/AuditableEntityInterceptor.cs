@@ -1,9 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore.ChangeTracking;
+using Redarbor.TechnicalTest.Application.Interfaces.Common;
 using Redarbor.TechnicalTest.Domain.Abstractions;
 
 namespace Redarbor.TechnicalTest.Infrastructure.Persistence.Interceptors;
 
-public class AuditableEntityInterceptor : SaveChangesInterceptor
+public class AuditableEntityInterceptor
+    (ICurrentUserService currentUserService)
+    : SaveChangesInterceptor
 {
     public override InterceptionResult<int> SavingChanges(
         DbContextEventData eventData,
@@ -31,14 +34,14 @@ public class AuditableEntityInterceptor : SaveChangesInterceptor
         {
             if (entry.State == EntityState.Added)
             {
-                entry.Entity.CreatedBy = "system";
+                entry.Entity.CreatedBy = currentUserService.GetCurrentUserName();
                 entry.Entity.CreatedOn = DateTime.UtcNow;
             }
             if (entry.State == EntityState.Modified ||
                 entry.State == EntityState.Added ||
                 entry.HasChangedOwned())
             {
-                entry.Entity.UpdatedBy = "system";
+                entry.Entity.UpdatedBy = currentUserService.GetCurrentUserName();
                 entry.Entity.UpdatedOn = DateTime.UtcNow;
             }
         }

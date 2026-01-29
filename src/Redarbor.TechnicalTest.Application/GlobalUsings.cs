@@ -1,4 +1,5 @@
 ﻿global using System.Data;
+global using Ardalis.GuardClauses;
 global using BuildingBlocks.CQRS;
 global using FluentValidation;
 global using MediatR;
