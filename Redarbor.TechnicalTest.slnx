@@ -13,7 +13,9 @@
   <Folder Name="/src/BuildingBlocks/">
     <Project Path="src/BuildingBlocks/BuildingBlocks/BuildingBlocks.csproj" Id="439e16f5-4968-4d76-b5c4-baa5f697a507" />
   </Folder>
-  <Folder Name="/src/tests/" />
+  <Folder Name="/src/tests/">
+    <Project Path="tests/Redarbor.TechnicalTest.Application.Tests/Redarbor.TechnicalTest.Application.Tests.csproj" Id="d5aea026-6eca-45fb-99b1-0888f1e22a76" />
+  </Folder>
   <Project Path="docker-compose.dcproj">
     <Build />
   </Project>
