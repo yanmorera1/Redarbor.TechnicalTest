@@ -11,6 +11,7 @@
     <Project Path="src/Redarbor.TechnicalTest.Infrastructure/Redarbor.TechnicalTest.Infrastructure.csproj" Id="d063bd1f-b511-44f2-8d31-a9931ea2d054" />
   </Folder>
   <Folder Name="/src/BuildingBlocks/">
+    <Project Path="src/BuildingBlocks/BuildingBlocks.Messaging/BuildingBlocks.Messaging.csproj" Id="0ef036d9-a16a-484a-b318-241fb669e434" />
     <Project Path="src/BuildingBlocks/BuildingBlocks/BuildingBlocks.csproj" Id="439e16f5-4968-4d76-b5c4-baa5f697a507" />
   </Folder>
   <Folder Name="/src/tests/">

@@ -10,22 +10,23 @@ public class EmployeeRepository
     )
     : IEmployeeRepository
 {
-    public async Task<int> AddAsync(Employee employee, CancellationToken cancellationToken)
+    public async Task<EmployeeId> AddAsync(Employee employee, CancellationToken cancellationToken)
     {
         await applicationDbContext.Employees.AddAsync(employee);
-        return await applicationDbContext.SaveChangesAsync(cancellationToken);
+        await applicationDbContext.SaveChangesAsync(cancellationToken);
+        return employee.Id;
     }
 
-    public async Task<int> UpdateAsync(Employee employee, CancellationToken cancellationToken)
+    public async Task UpdateAsync(Employee employee, CancellationToken cancellationToken)
     {
         applicationDbContext.Employees.Update(employee);
-        return await applicationDbContext.SaveChangesAsync(cancellationToken);
+        await applicationDbContext.SaveChangesAsync(cancellationToken);
     }
 
-    public async Task<int> DeleteAsync(Employee employee, CancellationToken cancellationToken)
+    public async Task DeleteAsync(Employee employee, CancellationToken cancellationToken)
     {
         applicationDbContext.Employees.Remove(employee);
-        return await applicationDbContext.SaveChangesAsync(cancellationToken);
+        await applicationDbContext.SaveChangesAsync(cancellationToken);
     }
 
     public async Task<IEnumerable<Employee>> GetAllAsync()

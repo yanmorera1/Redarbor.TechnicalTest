@@ -5,6 +5,9 @@ services:
   keycloak:
     image: quay.io/keycloak/keycloak:26.5.2
 
+  messagebroker:
+    image: rabbitmq:management
+
   redarbor.technicaltest.api:
     image: ${DOCKER_REGISTRY-}redarbortechnicaltestapi
     build:

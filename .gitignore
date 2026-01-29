@@ -22,5 +22,8 @@
 /src/BuildingBlocks/BuildingBlocks/obj
 /src/BuildingBlocks/BuildingBlocks/bin
 
+/src/BuildingBlocks/BuildingBlocks.Messaging/obj
+/src/BuildingBlocks/BuildingBlocks.Messaging/bin
+
 /tests/Redarbor.TechnicalTest.Application.Tests/obj
 /tests/Redarbor.TechnicalTest.Application.Tests/bin

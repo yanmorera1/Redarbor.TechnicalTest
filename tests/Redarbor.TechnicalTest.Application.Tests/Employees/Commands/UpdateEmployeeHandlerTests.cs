@@ -48,7 +48,6 @@ public class UpdateEmployeeHandlerTests
 
         _employeeRepository
             .Setup(m => m.UpdateAsync(It.IsAny<Employee>(), CancellationToken.None))
-            .ReturnsAsync(1)
             .Verifiable();
 
         // Act

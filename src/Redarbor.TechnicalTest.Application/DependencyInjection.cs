@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
-using System.Reflection.Metadata;
 using BuildingBlocks.Behaviors;
+using BuildingBlocks.Messaging.MassTransit;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -22,6 +22,7 @@ public static class DependencyInjection
         });
 
         services.AddValidatorsFromAssembly(assembly);
+        services.AddMessageBroker(configuration, assembly);
 
         return services;
     }
