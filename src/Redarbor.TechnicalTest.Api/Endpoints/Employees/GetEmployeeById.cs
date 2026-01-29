@@ -19,7 +19,9 @@ public class GetEmployeeById : ICarterModule
         .Produces<GetEmployeeByIdResponse>(StatusCodes.Status200OK)
         .ProducesProblem(StatusCodes.Status400BadRequest)
         .ProducesProblem(StatusCodes.Status404NotFound)
+        .ProducesProblem(StatusCodes.Status401Unauthorized)
         .WithSummary("Get an employee by id")
-        .WithDescription("Get an employee by id");
+        .WithDescription("Get an employee by id")
+        .RequireAuthorization();
     }
 }

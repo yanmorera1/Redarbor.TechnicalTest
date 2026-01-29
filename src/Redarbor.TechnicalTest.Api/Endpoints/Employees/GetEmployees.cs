@@ -20,7 +20,9 @@ public class GetEmployees : ICarterModule
         .Produces<GetEmployeeByIdResponse>(StatusCodes.Status200OK)
         .ProducesProblem(StatusCodes.Status404NotFound)
         .ProducesProblem(StatusCodes.Status400BadRequest)
+        .ProducesProblem(StatusCodes.Status401Unauthorized)
         .WithSummary("Get all the employees")
-        .WithDescription("Get all the employees");
+        .WithDescription("Get all the employees")
+        .RequireAuthorization();
     }
 }

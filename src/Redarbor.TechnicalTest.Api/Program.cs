@@ -2,8 +2,12 @@ using Redarbor.TechnicalTest.Api;
 using Redarbor.TechnicalTest.Application;
 using Redarbor.TechnicalTest.Infrastructure;
 using Redarbor.TechnicalTest.Infrastructure.Persistence.Extensions;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Host.UseSerilog((context, loggerConfig) =>
+            loggerConfig.ReadFrom.Configuration(context.Configuration));
 
 builder.Services
     .AddAplication(builder.Configuration)
