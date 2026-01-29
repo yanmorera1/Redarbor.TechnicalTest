@@ -40,7 +40,6 @@ public class DeleteEmployeeHandlerTests
 
         _employeeRepository
             .Setup(m => m.DeleteAsync(It.IsAny<Employee>(), CancellationToken.None))
-            .ReturnsAsync(1)
             .Verifiable();
 
         // Act

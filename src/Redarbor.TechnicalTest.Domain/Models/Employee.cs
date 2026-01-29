@@ -55,8 +55,6 @@ public class Employee : Aggregate<EmployeeId>
             LastLogin = lastLogin
         };
 
-        employee.AddDomainEvent(new EmployeeCreatedEvent(employee));
-
         return employee;
     }
 

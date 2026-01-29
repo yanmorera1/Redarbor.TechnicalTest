@@ -13,9 +13,11 @@ public class CreateEmployeeHandler
 
         var employee = CreateEmployee(command.Employee);
 
-        int employeeId = await employeeRepository.AddAsync(employee, cancellationToken);
+        EmployeeId employeeId = await employeeRepository.AddAsync(employee, cancellationToken);
 
-        return new CreateEmployeeResult(employeeId);
+        employee.AddDomainEvent(new EmployeeCreatedEvent(employee));
+
+        return new CreateEmployeeResult(employeeId.Value);
     }
 
     private Employee CreateEmployee(CreateEmployeeDto employee)

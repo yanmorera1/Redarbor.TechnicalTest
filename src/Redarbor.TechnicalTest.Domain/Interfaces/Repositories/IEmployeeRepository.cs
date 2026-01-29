@@ -2,9 +2,9 @@
 
 public interface IEmployeeRepository
 {
-    Task<int> AddAsync(Employee employeem, CancellationToken cancellationToken);
-    Task<int> UpdateAsync(Employee employee, CancellationToken cancellationToken);
-    Task<int> DeleteAsync(Employee employee, CancellationToken cancellationToken);
+    Task<EmployeeId> AddAsync(Employee employeem, CancellationToken cancellationToken);
+    Task UpdateAsync(Employee employee, CancellationToken cancellationToken);
+    Task DeleteAsync(Employee employee, CancellationToken cancellationToken);
     Task<long> LongCountAsync(CancellationToken cancellationToken);
     Task<Employee?> GetByIdAsync(int id);
     Task<IEnumerable<Employee>> GetAllAsync();

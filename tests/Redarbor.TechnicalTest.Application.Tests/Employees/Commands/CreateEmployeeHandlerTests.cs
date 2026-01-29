@@ -33,7 +33,7 @@ public class CreateEmployeeHandlerTests
 
         _employeeRepository
             .Setup(m => m.AddAsync(It.IsAny<Employee>(), CancellationToken.None))
-            .ReturnsAsync(1)
+            .ReturnsAsync(new EmployeeId(1))
             .Verifiable();
 
         // Act
