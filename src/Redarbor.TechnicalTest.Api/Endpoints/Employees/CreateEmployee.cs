@@ -16,7 +16,9 @@ public class CreateEmployee : ICarterModule
         .WithName("CreateEmployee")
         .Produces<CreateEmployeeResponse>(StatusCodes.Status201Created)
         .ProducesProblem(StatusCodes.Status400BadRequest)
+        .ProducesProblem(StatusCodes.Status401Unauthorized)
         .WithSummary("Creates an employee")
-        .WithDescription("Creates an employee");
+        .WithDescription("Creates an employee")
+        .RequireAuthorization();
     }
 }

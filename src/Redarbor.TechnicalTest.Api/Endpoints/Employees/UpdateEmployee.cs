@@ -19,7 +19,9 @@ public class UpdateEmployee : ICarterModule
         .Produces<UpdateEmployeeResponse>(StatusCodes.Status200OK)
         .ProducesProblem(StatusCodes.Status400BadRequest)
         .ProducesProblem(StatusCodes.Status404NotFound)
+        .ProducesProblem(StatusCodes.Status401Unauthorized)
         .WithSummary("Updates an employee")
-        .WithDescription("Updates an employee");
+        .WithDescription("Updates an employee")
+        .RequireAuthorization();
     }
 }

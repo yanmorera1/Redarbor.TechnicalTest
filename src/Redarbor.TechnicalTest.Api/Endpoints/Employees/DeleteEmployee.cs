@@ -18,7 +18,9 @@ public class DeleteEmployee : ICarterModule
         .Produces<DeleteEmployeeResponse>(StatusCodes.Status200OK)
         .ProducesProblem(StatusCodes.Status400BadRequest)
         .ProducesProblem(StatusCodes.Status404NotFound)
+        .ProducesProblem(StatusCodes.Status401Unauthorized)
         .WithSummary("Deletes an employee")
-        .WithDescription("Deletes an employee");
+        .WithDescription("Deletes an employee")
+        .RequireAuthorization();
     }
 }
